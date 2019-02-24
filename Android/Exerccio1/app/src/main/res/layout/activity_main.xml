@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".MainActivity">
+    tools:context="br.com.digitalhouse.exercicio1.MainActivity">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
