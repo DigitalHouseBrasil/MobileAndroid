@@ -5,23 +5,19 @@ import java.security.NoSuchAlgorithmException;
 
 public class AppUtils {
 
+    private static char[] HEXCHARS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
-    public static final String URL_MARVEL = "http://www.marvel.com";
-
-    public static final String PUBLIC_KEY = "6eb7e8896ec5850c52515a8a23ee97f0";
-    public static final String PRIVATE_KEY = "0dd0c16fedb8a02985977eafca66b49f5e6a526f";
-
-    public static final String TIMESTAMP = "ts";
-    public static final String API_KEY = "apikey";
-    public static final String HASH = "hash";
-
-
-    public static String genKeyUser() {
-        String ts = Long.toString(System.currentTimeMillis() / 1000);
-        String hash = md5(ts + PRIVATE_KEY + PUBLIC_KEY);
-        return "?" + TIMESTAMP + "=" + ts + "&" + API_KEY + "=" + PUBLIC_KEY + "&" +
-                HASH + "=" + hash;
+    private static String hexEncode(byte[] bytes) {
+        char[] result = new char[bytes.length * 2];
+        int b;
+        for (int i = 0, j = 0; i < bytes.length; i++) {
+            b = bytes[i] & 0xff;
+            result[j++] = HEXCHARS[b >> 4];
+            result[j++] = HEXCHARS[b & 0xf];
+        }
+        return new String(result);
     }
+
 
     public static String md5(String s) {
         try {
@@ -29,12 +25,7 @@ public class AppUtils {
             MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
             digest.update(s.getBytes());
 
-            //byte messageDigest[] = digest.digest();
-            // Create Hex String
-            StringBuilder hexString = new StringBuilder();
-            for (int i=0; i<digest.digest().length; i++)
-                hexString.append(Integer.toHexString(0xFF & digest.digest()[i]));
-            return hexString.toString();
+            return hexEncode(digest.digest());
 
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
