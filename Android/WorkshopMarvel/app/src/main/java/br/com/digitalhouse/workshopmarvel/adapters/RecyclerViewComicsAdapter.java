@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.util.Pair;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +26,11 @@ public class RecyclerViewComicsAdapter extends RecyclerView.Adapter<RecyclerView
         this.results = results;
     }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -43,13 +46,17 @@ public class RecyclerViewComicsAdapter extends RecyclerView.Adapter<RecyclerView
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String transitionName = "image_" + position;
                 Intent intent = new Intent(viewHolder.itemView.getContext(), DetailActivity.class);
                 intent.putExtra("comic", result);
+                intent.putExtra("transitionName", transitionName);
+
+                viewHolder.imageComic.setTransitionName(transitionName);
 
                 ActivityOptionsCompat options = ActivityOptionsCompat.
                         makeSceneTransitionAnimation((Activity) viewHolder.itemView.getContext(),
-                                viewHolder.imageComic,
-                                ViewCompat.getTransitionName(viewHolder.imageComic));
+                                viewHolder.imageComic, transitionName);
 
                 viewHolder.itemView.getContext().startActivity(intent, options.toBundle());
             }

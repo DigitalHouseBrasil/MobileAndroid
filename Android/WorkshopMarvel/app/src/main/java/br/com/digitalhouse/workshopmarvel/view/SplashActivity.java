@@ -26,21 +26,21 @@ public class SplashActivity extends AppCompatActivity {
         imageSplash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jump();
+                goToHome();
             }
         });
 
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                jump();
+                goToHome();
             }
         }, 3000);
 
     }
 
 
-    private void jump() {
+    private void goToHome() {
         timer.cancel();
         startActivity(new Intent(SplashActivity.this, HomeActivity.class));
         finish();

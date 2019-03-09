@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.transition.ChangeBounds;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -53,6 +52,8 @@ public class HomeActivity extends AppCompatActivity {
         recyclerComics = findViewById(R.id.recyclerComics);
         progressBar = findViewById(R.id.progressBar);
         adapter = new RecyclerViewComicsAdapter(new ArrayList<>());
+        recyclerComics.setHasFixedSize(true);
+        recyclerComics.setItemViewCacheSize(20);
         recyclerComics.setAdapter(adapter);
         recyclerComics.setLayoutManager(new GridLayoutManager(this, 3));
     }

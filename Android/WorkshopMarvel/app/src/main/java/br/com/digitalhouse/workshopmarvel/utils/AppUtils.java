@@ -1,5 +1,10 @@
 package br.com.digitalhouse.workshopmarvel.utils;
 
+import android.app.Activity;
+import android.transition.ChangeBounds;
+import android.transition.Explode;
+import android.view.Window;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -31,5 +36,11 @@ public class AppUtils {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public static void setAnimation(Activity activity) {
+        activity.getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        activity.getWindow().setEnterTransition(new Explode());
+        activity.getWindow().setExitTransition(new ChangeBounds());
     }
 }

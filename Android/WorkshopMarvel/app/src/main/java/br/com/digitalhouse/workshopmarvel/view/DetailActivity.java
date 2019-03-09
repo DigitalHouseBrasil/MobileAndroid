@@ -3,11 +3,12 @@ package br.com.digitalhouse.workshopmarvel.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.transition.ChangeBounds;
+import android.text.Html;
+import android.transition.Explode;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +22,8 @@ import java.util.Locale;
 import br.com.digitalhouse.workshopmarvel.R;
 import br.com.digitalhouse.workshopmarvel.model.Result;
 
+import static br.com.digitalhouse.workshopmarvel.utils.AppUtils.setAnimation;
+
 public class DetailActivity extends AppCompatActivity {
 
     private ImageView imageHero;
@@ -28,10 +31,9 @@ public class DetailActivity extends AppCompatActivity {
     private ImageView imageBack;
     private Toolbar toolbar;
     private AppBarLayout appBarLayout;
-    private CollapsingToolbarLayout toolbarLayout;
     private Result result;
     private TextView textTitle;
-    private TextView textViewDesciption;
+    private TextView textViewDescription;
     private TextView textViewPublished;
     private TextView textViewPrice;
     private TextView textViewPages;
@@ -39,14 +41,18 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setAnimation(this);
         setContentView(R.layout.activity_detail);
+
         initViews();
         setSupportActionBar(toolbar);
 
         result = getIntent().getParcelableExtra("comic");
+        String transitionName = getIntent().getStringExtra("transitionName");
 
+        imageHero.setTransitionName(transitionName);
         textTitle.setText(result.getTitle());
-        textViewDesciption.setText(result.getDescription());
+        textViewDescription.setText(Html.fromHtml(result.getDescription()));
 
         try {
             SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.getDefault());
@@ -111,9 +117,8 @@ public class DetailActivity extends AppCompatActivity {
         imageBack = findViewById(R.id.imageBack);
         imageHero = findViewById(R.id.imageComic);
         appBarLayout = findViewById(R.id.app_bar);
-        toolbarLayout = findViewById(R.id.toolbar_layout);
         textTitle = findViewById(R.id.textTitle);
-        textViewDesciption = findViewById(R.id.textViewDesciption);
+        textViewDescription = findViewById(R.id.textViewDesciption);
         textViewPublished = findViewById(R.id.textViewPublished);
         textViewPrice = findViewById(R.id.textViewPrice);
         textViewPages = findViewById(R.id.textViewPages);

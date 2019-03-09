@@ -13,6 +13,6 @@ public class ComicsRepository {
     public Single<ComicsResponse> getComics() {
         String ts = Long.toString(System.currentTimeMillis() / 1000);
         String hash = md5(ts + PRIVATE_KEY + PUBLIC_KEY);
-        return getApiService().getComics("magazine", "comic", true, "focDate", ts, hash, PUBLIC_KEY);
+        return getApiService().getComics("magazine", "comic", true, "focDate", "50", ts, hash, PUBLIC_KEY);
     }
 }
