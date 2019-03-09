@@ -44,26 +44,23 @@ public class DetailActivity extends AppCompatActivity {
         setAnimation(this);
         setContentView(R.layout.activity_detail);
 
+        // Inicializa as views que serão utilizadas na activity
         initViews();
+
+        // Adicionamos a status bar
         setSupportActionBar(toolbar);
 
+        // Pegamos o quadrinho que que foi clicado na lista anterior
         result = getIntent().getParcelableExtra("comic");
-        String transitionName = getIntent().getStringExtra("transitionName");
 
+        // Pegamos o nome da transição para fazer a animação
+        String transitionName = getIntent().getStringExtra("transitionName");
         imageHero.setTransitionName(transitionName);
+
+
+        // Configuramos nas view os valores do quadrinho que pegamos
         textTitle.setText(result.getTitle());
         textViewDescription.setText(Html.fromHtml(result.getDescription()));
-
-        try {
-            SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.getDefault());
-            SimpleDateFormat format = new SimpleDateFormat("EEE, d MMM yyyy", Locale.getDefault());
-            Date date = formatDate.parse(result.getDates().get(0).getDate());
-            String dateString = format.format(date);
-            textViewPublished.setText(dateString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
         textViewPrice.setText("$" + result.getPrices().get(0).getPrice());
         textViewPages.setText(result.getPageCount().toString());
 
@@ -79,7 +76,19 @@ public class DetailActivity extends AppCompatActivity {
                     .into(imageBackground);
         }
 
+        // Mudadamos a forma de mostrar a data DE '2007-10-31 00:00:00' para 'qua, 31 out 2007'
+        try {
+            SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.getDefault());
+            SimpleDateFormat format = new SimpleDateFormat("EEE, d MMM yyyy", Locale.getDefault());
+            Date date = formatDate.parse(result.getDates().get(0).getDate());
+            String dateString = format.format(date);
+            textViewPublished.setText(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
+        // Adicionamos o evendo se click na imagem para irmos para tela
+        // que mostra a imagem inteira
         imageHero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,6 +98,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        // Adicionamos o evento de click para finalizarmos a activity
         imageBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +107,7 @@ public class DetailActivity extends AppCompatActivity {
         });
 
 
+        // Adicionamos o evento de scroll, para mostrar ou não a imagem pequena do quadrinho
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {

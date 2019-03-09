@@ -29,14 +29,19 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Inicializa as views que serão utilizadas na activity
         initViews();
 
+
+        // Busca na API da Marvel os quadrinhos para listarmos
         viewModel.getComics();
 
+        // Atualiza a lista com os quadriho buscados na API
         viewModel.getResults().observe(this, results -> {
             adapter.update(results);
         });
 
+        // Mostra a view de loaging na activity enquanto realizamos a busca na API
         viewModel.isLoasing().observe(this, loading -> {
             if (loading) {
                 progressBar.setVisibility(View.VISIBLE);

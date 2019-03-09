@@ -17,14 +17,17 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ComicsViewModel extends AndroidViewModel {
 
+    // Variáveis que serão usadas para buscar os quadrinhos na API
     private MutableLiveData<List<Result>> _resultLiveData = new MutableLiveData<>();
     private MutableLiveData<Boolean> _loading = new MutableLiveData<>();
     private CompositeDisposable disposable = new CompositeDisposable();
     private ComicsRepository repository = new ComicsRepository();
 
+    // Construtor padrão do viewmodel
     public ComicsViewModel(@NonNull Application application) {
         super(application);
     }
+
 
     public LiveData<List<Result>> getResults() {
         return _resultLiveData;

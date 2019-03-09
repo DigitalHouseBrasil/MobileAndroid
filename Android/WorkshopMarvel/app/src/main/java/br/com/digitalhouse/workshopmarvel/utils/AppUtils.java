@@ -1,7 +1,6 @@
 package br.com.digitalhouse.workshopmarvel.utils;
 
 import android.app.Activity;
-import android.transition.ChangeBounds;
 import android.transition.Explode;
 import android.view.Window;
 
@@ -24,6 +23,9 @@ public class AppUtils {
     }
 
 
+    /**
+     * Cria um hash MD5 par enviarmos a API da marvel
+     * */
     public static String md5(String s) {
         try {
             // Create MD5 Hash
@@ -41,6 +43,5 @@ public class AppUtils {
     public static void setAnimation(Activity activity) {
         activity.getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         activity.getWindow().setEnterTransition(new Explode());
-        activity.getWindow().setExitTransition(new ChangeBounds());
     }
 }
