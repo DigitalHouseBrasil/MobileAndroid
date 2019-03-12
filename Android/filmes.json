@@ -1,0 +1,28 @@
+{
+  "filmes": [
+    {
+      "titulo": "Capitã Marvel",
+      "data": "8 de março de 2019",
+      "descricao": "A Capitã Marvel se envolve em uma guerra galáctica entre duas raças alienígenas.",
+      "direcao": "Anna Boden, Ryan Fleck"
+    },
+    {
+    "titulo": "Bohemian Rhapsody",
+    "data": " 24 de outubro de 2018",
+    "descricao": "Freddie Mercury, Brian May, Roger Taylor e John Deacon formam a banda de rock Queen em 1970. Quando o estilo de vida agitado de Mercury começa a sair de controle, o grupo precisa encontrar uma forma de lidar com o sucesso e os excessos de seu líder.",
+    "direcao": "Bryan Singer"
+    },
+    {
+    "titulo": "Nasce Uma Estrela",
+    "data": "11 de outubro de 2018",
+    "descricao": "A jovem cantora Ally ascende ao estrelato enquanto seu parceiro Jackson Maine, um renomado artista de longa carreira, cai no esquecimento por problemas com o álcool. Os momentos opostos acabam por minar o relacionamento amoroso dos dois.",
+    "direcao": "Bradley Cooper"
+    },
+    {
+    "titulo": "Homem-Aranha: No Aranhaverso",
+    "data": "10 de janeiro de 2019",
+    "descricao": "Após ser atingido por uma teia radioativa, Miles Morales, um jovem negro do Brooklyn, se torna o Homem-Aranha, inspirado no legado do já falecido Peter Parker.",
+    "direcao": "Peter Ramsey, Bob Persichetti, Rodney Rothman"
+    }
+  ]
+}
