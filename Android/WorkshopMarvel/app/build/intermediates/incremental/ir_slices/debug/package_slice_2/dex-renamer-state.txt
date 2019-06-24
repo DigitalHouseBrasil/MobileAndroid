@@ -1,0 +1,4 @@
+#Tue Feb 26 17:39:40 BRT 2019
+base.0=/home/tairo/workspace/MobileAndroid/Android/WorkshopMarvel/app/build/intermediates/transforms/dexMerger/debug/2
+path.0=classes.dex
+renamed.0=classes.dex

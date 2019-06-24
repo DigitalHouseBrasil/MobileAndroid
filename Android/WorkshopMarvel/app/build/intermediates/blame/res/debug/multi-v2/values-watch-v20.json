@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/tairo/workspace/MobileAndroid/Android/WorkshopMarvel/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
+            "map": [
+                {
+                    "source": "/home/tairo/.gradle/caches/transforms-2/files-2.1/b039f5be0ef67c083ea0e9b4a4671749/res/values-watch-v20/values-watch-v20.xml",
+                    "from": {
+                        "startLines": "2,5,8",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,214,385",
+                        "endLines": "4,7,10",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "209,380,553"
+                    }
+                }
+            ]
+        }
+    ]
+}
