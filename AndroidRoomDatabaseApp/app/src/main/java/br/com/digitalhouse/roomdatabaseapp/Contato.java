@@ -4,24 +4,28 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Contato implements Parcelable {
+    private long id;
     private String nome;
     private String telefone;
 
     public Contato() {
     }
 
-    public Contato(String nome, String telefone) {
+    public Contato(long id, String nome, String telefone) {
+        this.id = id;
         this.nome = nome;
         this.telefone = telefone;
     }
 
     protected Contato(Parcel in) {
+        id = in.readLong();
         nome = in.readString();
         telefone = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
         dest.writeString(nome);
         dest.writeString(telefone);
     }
@@ -42,6 +46,14 @@ public class Contato implements Parcelable {
             return new Contato[size];
         }
     };
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
