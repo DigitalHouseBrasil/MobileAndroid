@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import br.com.digitalhouse.roomdatabaseapp.Contato;
+import br.com.digitalhouse.roomdatabaseapp.model.Contato;
 import br.com.digitalhouse.roomdatabaseapp.R;
 import br.com.digitalhouse.roomdatabaseapp.interfaces.RecyclerViewOnItemClickListener;
 

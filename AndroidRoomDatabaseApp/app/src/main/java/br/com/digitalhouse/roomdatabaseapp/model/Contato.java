@@ -1,18 +1,27 @@
-package br.com.digitalhouse.roomdatabaseapp;
+package br.com.digitalhouse.roomdatabaseapp.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+@Entity(tableName = "contatos")
 public class Contato implements Parcelable {
+
+    @PrimaryKey(autoGenerate = true)
     private long id;
+
+    @ColumnInfo(name = "nome")
     private String nome;
+
+    @ColumnInfo(name = "telefone")
     private String telefone;
 
     public Contato() {
     }
 
-    public Contato(long id, String nome, String telefone) {
-        this.id = id;
+    public Contato(String nome, String telefone) {
         this.nome = nome;
         this.telefone = telefone;
     }
